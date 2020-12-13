@@ -18,11 +18,11 @@
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input  class="form-control" type="email" name="email" id="" placeholder="Enter your Email.." autocomplete="off" require>
+                <input  class="form-control" type="email" name="email" id="" placeholder="Enter your Email.." autocomplete="off" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input  class="form-control" type="password" name="password" id="" placeholder="*********" autocomplete="off" require>
+                <input  class="form-control" type="password" name="password" id="" placeholder="*********" autocomplete="off" required>
             </div>
             <div class="small">
                 forgot Password?<a href="forgot.php">Click Here</a>
@@ -31,9 +31,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block btn-lg" name="sign-in">Sign in</button>
             </div>
-            <!-- <?php
-                include("signin_user.php")
-            ?> -->
+            <!-- <?php //include("signin_user.php"); ?> -->
         </form>
         <div class="text-center small" style="color:#67428B;">Dont Have an Account? <a href="signup.php">Create One</a></div>
     </div>
