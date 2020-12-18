@@ -54,9 +54,9 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign up</button>
             </div>
-            <!-- <?php
-               // include("signup_user.php")
-            ?> -->
+             <?php
+               include("signup_user.php")
+            ?> 
         </form>
         <div class="text-center small" style="color:#67428B;">Already Have an Account? <a href="signin.php">Sign in</a></div>
     </div>

@@ -22,16 +22,16 @@
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input  class="form-control" type="password" name="password" id="" placeholder="*********" autocomplete="off" required>
+                <input  class="form-control" type="password" name="pass" id="" placeholder="*********" autocomplete="off" required>
             </div>
             <div class="small">
                 forgot Password?<a href="forgot.php">Click Here</a>
             </div>
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block btn-lg" name="sign-in">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_in">Sign in</button>
             </div>
-            <!-- <?php //include("signin_user.php"); ?> -->
+             <?php include("signin_user.php"); ?> 
         </form>
         <div class="text-center small" style="color:#67428B;">Dont Have an Account? <a href="signup.php">Create One</a></div>
     </div>
