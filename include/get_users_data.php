@@ -16,9 +16,9 @@
                 <div class='chat-left-img'>
                 <img src='$user_profile'>
                 </div>
-                <div class='chat-left-details'>
+                <div class='chat-left-detail'>
                 <p><a href='home.php?user_name=$user_name'>$user_name</a></p>";
-            if($login == "Online"){
+            if($login == 'Online'){
                 echo"<span><i class ='fa fa-circle' aria-hidden='true'></i>Online</span>";
             }
             else{
