@@ -26,7 +26,7 @@ else{
             <div class="col-md-3 col-sm-3 col-xs-12 left sidebar">
                 <div class="input-group searchbox">
                     <div class="input-group-btn">
-                        <center><a href="include/find_freinds.php"><button class="btn btn-default search-icon" name="search_user" type="submit">Add New User</a></button></center>
+                        <!-- <center><a href="include/find_freinds.php"><button class="btn btn-default search-icon" name="search_user" type="submit">Add New User</a></button></center> -->
                     </div>
                 </div>
                 <div class="left-chat">
@@ -45,9 +45,11 @@ else{
                         $get_user = "select * from users where user_email='$user'";
                         $run_user =mysqli_query($con,$get_user);
                         $row = mysqli_fetch_array($run_user);
-
-                        $user_id =$row['user_id'];
-                        $user_name = $row['user_name'];
+                        //  (mysqli_num_rows($row) == 1) 
+                            $user_id =$row['user_id'];
+                            $user_name = $row['user_name'];
+                            echo "User_name :'$user_name'";
+                          
                     ?>
                      <!--  getting the user information which user click --->
                     <?php
@@ -57,9 +59,10 @@ else{
                             $get_user ="select * from users where user_name='$get_username'";
 
                             $run_user = mysqli_query($con,$get_user);
-                            $row_user = mysqli_query($run_user);
+                            $row_user = mysqli_fetch_array($run_user);
 
                             $username = $row_user['user_name'];
+                            echo "sender_username:'$username'";
                             $user_profile_image = $row_user['user_profile'];                       
                         }
 
@@ -87,11 +90,11 @@ else{
                         </div>
                     </div>
                     <div class="row">
-                        <div id = "Scrolling_to_bottom" class="col-md-12 right-header-contentChat">
+                        <div id = "Scrolling_to_bottom" class="col-lg-12 right-header-contentChat" >
                             <?php
-                                $update_msg = mysqli_query("UPDATE users_chat SET msg_status = 'read' WHERE sender_username='$username' AND receiver_username='$user_name'");
-
-                                $sel_msg = "select * from users_chat where (sender_username ='$username' AND receiver_username = '$username') OR (receiver_username = '$user_name' AND sender_username='$username') ORDER by 1 ASC";
+                                $update_msg = mysqli_query($con,"UPDATE users_chat SET msg_status = 'read' WHERE sender_username='$username' AND receiver_username='$user_name'");
+                               
+                                $sel_msg = "select * from users_chat where (sender_username ='$user_name' AND receiver_username = '$username') OR (receiver_username ='$user_name' AND sender_username = '$username')  ORDER by 1 ASC";
                                 $run_msg = mysqli_query($con , $sel_msg);
 
                                 while($row = mysqli_fetch_array($run_msg)){
@@ -108,7 +111,7 @@ else{
                                             echo"
                                                 <li>
                                                     <div class = 'rightside-right-chat'>
-                                                        <span>$username <small>$msg_date</small></span>
+                                                        <span>$username <small>$msg_date</small></span><br><br>
                                                         <p>$msg_content</p>
                                                 </li>
 
@@ -119,7 +122,7 @@ else{
                                             echo"
                                                 <li>
                                                     <div class = 'rightside-left-chat'>
-                                                        <span>$username <small>$msg_date</small></span>
+                                                        <span>$username <small>$msg_date</small></span><br><br>
                                                         <p>$msg_content</p>
                                                 </li>
 
@@ -132,14 +135,15 @@ else{
                                 }
                             ?>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-12 right-chat-textbox">
                            <form method="post">
                                 <input autocomplete="off" type="text" name="msg_content" placeholder="Write Your Message ..... ">
                                 <button class="btn" name="submit" ><i class="fa fa-telegram" aria-hidden="true"></i></button>
                            </form>
                         </div>
+                    </div>
+                    <div class="row">
+                        
                     </div>
                 </div>
             </div>
@@ -148,7 +152,7 @@ else{
     <?php
       if(isset($_POST['submit'])){
         
-        $msg = htmlentities($_POST['msg_content']);
+        $msg = ($_POST['msg_content']);
 
         if($msg == ""){
             echo"
@@ -165,7 +169,7 @@ else{
             ";
         }
         else{
-            $insert ="insert into users_chat(sender_username,receiver_username,msg_content,msg_status,msg_date) values('$user_name','$username','$msg_content','unread',NOW())";
+            $insert ="insert into users_chat(sender_username,receiver_username,msg_content,msg_status,msg_date) values('$user_name','$username','$msg','unread',NOW())";
             $run_insert = mysqli_query($con,$insert);
         }
       }  
