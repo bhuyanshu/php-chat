@@ -1,1 +1,2 @@
 # php-chat
+CHAT SYSTEM WORKING AND LOGIC
